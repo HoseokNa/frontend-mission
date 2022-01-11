@@ -11,4 +11,17 @@ describe('MessageInput', () => {
 
     expect(message.text()).toBe(TEST_MESSAGE);
   });
+
+  it('회전 버튼 클릭시 문자열에 첫번째 글자가 맨 뒤로 가야 한다.', async () => {
+    const ORIGINAL_MESSAGE = '12345';
+    const ROTATED_MESSAGE = '23451';
+    const wrapper = shallowMount(MessageInput);
+
+    await wrapper.find('[data-test="input"]').setValue(ORIGINAL_MESSAGE);
+    await wrapper.find('[data-test="rotate-button"]').trigger('click');
+
+    const message = wrapper.get('[data-test="display"]');
+
+    expect(message.text()).toBe(ROTATED_MESSAGE);
+  });
 });

@@ -1,7 +1,7 @@
 <template>
   <div>
     <input v-model="message" data-test="input" />
-    <button v-on:click="rotateMessage">회전</button>
+    <button v-on:click="rotateMessage" data-test="rotate-button">회전</button>
     <p data-test="display">{{ message }}</p>
   </div>
 </template>

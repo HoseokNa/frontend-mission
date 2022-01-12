@@ -24,4 +24,16 @@ describe('MessageInput', () => {
 
     expect(message.text()).toBe(ROTATED_MESSAGE);
   });
+
+  it('shows alarm with message and counting by clicking button', async () => {
+    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    const TEST_MESSAGE = '테스트 메세지';
+    const wrapper = shallowMount(MessageInput);
+
+    await wrapper.find('[data-test="input"]').setValue(TEST_MESSAGE);
+    await wrapper.find('[data-test="alert-button"]').trigger('click');
+    await wrapper.find('[data-test="alert-button"]').trigger('click');
+
+    expect(window.alert).toBeCalledWith(`${TEST_MESSAGE} : 2`);
+  });
 });

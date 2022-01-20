@@ -1,7 +1,7 @@
 <template>
   <div id="item-info-page">
-    <div data-test="item-image-container">
-      <img data-test="item-image-file" src="@/assets/item_sample_image.jpeg" />
+    <div class="image-container">
+      <img data-test="item-image" :src="image" />
     </div>
   </div>
 </template>
@@ -10,7 +10,10 @@
 export default {
   name: 'ItemInfoPage',
   data() {
-    return {};
+    return {
+      image:
+        'https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211220_1639937393215421m.jpg',
+    };
   },
   methods: {},
   computed: {},

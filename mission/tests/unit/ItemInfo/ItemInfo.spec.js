@@ -8,10 +8,17 @@ describe('ItemInfoPage', () => {
     expect(wrapper.find('#item-info-page').exists()).toBe(true);
   });
 
-  it('renders item image in image-container', () => {
-    const wrapper = mount(ItemInfoPage);
-    const imageContainer = wrapper.find('[data-test="item-image-container"]');
+  it('renders item image', () => {
+    const testImage = 'https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211220_1639937393215421m.jpg';
 
-    expect(imageContainer.find('[data-test="item-image-file"]').exists()).toBe(true);
+    const wrapper = mount(ItemInfoPage, {
+      data() {
+        return {
+          image: testImage,
+        };
+      },
+    });
+
+    expect(wrapper.find('img[data-test="item-image"]').attributes('src')).toBe(testImage);
   });
 });
